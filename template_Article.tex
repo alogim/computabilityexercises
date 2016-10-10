@@ -1,16 +1,61 @@
 \documentclass[titlepage]{article}
+\usepackage{flexisym}
 
 %opening
 \title{Computability and Computational Complexity Exercises Explained}
 \author{Michael Dallago}
 \date{October-December 2016}
 
+\newcounter{exercise}
+\newcounter{solution}
+
+\newcommand\Exercise{%
+	\stepcounter{exercise}%
+	\textbf{Exercise \theexercise.}~%
+	\setcounter{solution}{0}%
+}
+
+\newcommand\TheSolution{%
+	\textbf{Solution:}\\%
+}
+
+\newcommand\ASolution{%
+	\stepcounter{solution}%
+	\textbf{Solution \thesolution:}\\%
+}
+\parindent 0in
+\parskip 1em
 \begin{document}
 
 \maketitle
 
 \section{Undecidability}
+\Exercise  Give informal reductions from the “hello-world” problem to the following:
+\begin{enumerate}
+	\item Given a program and an input, does the program stop?
+	\item Given a program and an input, does the program ever produce an
+	output?
+	\item Given two programs and an input, do the two programs produce the
+	same output?
+\end{enumerate}
 
+\TheSolution \begin{enumerate}
+	\item In order to understand whether the program \textit{P} stops on input \textit{I}, modify \textit{P} constructing a new program $P^\prime$ so that
+	\begin{itemize}
+		\item When \textit{P} would halt, $P^\prime$ will output \texttt{hello, world}
+		\item When \textit{P} would output \texttt{hello, world}, $P^\prime$ halt
+	\end{itemize}
+	In this way, if the original program $P$ printed \texttt{hello, world}, the new $P^\prime$ will halt, whereas if the original program stopped, the new one will print \texttt{hello, world}.
+	
+	\item This is simply accomplished by replacing any output statement of $P$ by one that outputs \texttt{hello, world}. 
+	
+	\item If we consider $ P $ as a general program and $ P^\prime $ as the standard \texttt{hello, world} one, then checking whether the two programs produce the same output is trivial, since you just need to replace any output of $ P $ by one that outputs \texttt{hello, world}.
+\end{enumerate}
+
+\clearpage
+
+\section{Turing Machines}
+bla bla bla
 
 
 \end{document}
